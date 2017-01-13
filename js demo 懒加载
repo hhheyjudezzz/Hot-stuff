@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js onscroll事件</title>
+	<style type="text/css">
+		body{
+			height: 1500px;
+		}
+		#inner{
+			margin-top: 1200px;
+		}
+		img{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="inner">
+		<img src="" date-src="images/1.jpg" alt=""><br/>
+		<img src="" date-src="images/2.jpg" alt=""><br/>
+		<img src="" date-src="images/3.jpg" alt=""><br/>
+		<img src="" date-src="images/4.jpg" alt="">
+	</div>
+</body>
+<script type="text/javascript">
+	var img = document.getElementsByTagName('img')
+	var num = 0;
+	//当有滚动条时候，并拉动滚动条时，触发onscroll事件
+	window.onscroll =function (){   //document.onscroll
+		// console.log(++num);
+		//得到浏览器高度
+		var windowH =document.documentElement.clientHeight;
+		for(var i = 0;i<img.length;i++){
+			var imgTop = img[i].getBoundingClientRect().top;
+			if(imgTop<windowH/2){
+			img[i].src=img[i].getAttribute("date-src")
+			}
+		}		
+	}
+</script>
+</html>
